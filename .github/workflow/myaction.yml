@@ -1,0 +1,6 @@
+name: gitaction_test
+jobs:
+  test:
+    steps:
+      - name: karthik.rajendran@starive.com
+        run: echo "Hello, world!"

@@ -1,5 +1,0 @@
-jobs:
-  test:
-    steps:
-      - name: karthik.rajendran@straive.com
-        run: echo "Hello, world!"
