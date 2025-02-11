@@ -1,36 +1,30 @@
-# This is a basic workflow to help you get started with Actions
+name: Commit Changes After 5 Minutes
 
-name: schedule cron
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main  # Change this to your target branch
+  schedule:
+    - cron: '*/5 * * * *'  # This runs every 5 minutes
 
-    schedule:
-    # Runs at 00:00 UTC every day
-    - cron: "5 11 * * *"
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  commit:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: karthik.rajendran@straive.com
+        run: echo hello world
+
+      - name: Wait for 5 minutes
+        run: sleep 300  # Wait for 5 minutes (300 seconds)
+
+      - name: Make changes
         run: |
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add *.json
-          git commit -m "Update IMDb Top 250 data [skip ci]" || exit 0
-          git push
+          echo "This is a new commit" >> changes.txt
+          git config --local karthik.rajendran "you@example.com"
+          git config --local  karthikstraiveus "karthik straive"
+          git add changes.txt
+          git commit -m "Automated commit after 5 minutes"
+          git push origin main  # Change this to your target branch
