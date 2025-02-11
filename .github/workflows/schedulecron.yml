@@ -31,7 +31,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: karthik.rajendran@straive.com
-        run: actions/checkout@v4
+        run: echo test
 
       - name: Commit and push changes
         run: |
