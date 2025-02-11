@@ -1,0 +1,30 @@
+name: Commit Changes After 5 Minutes
+
+on:
+  push:
+    branches:
+      - main  # Change this to your target branch
+  schedule:
+    - cron: '*/5 * * * *'  # This runs every 5 minutes
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: karthik.rajendran@straive.com
+        run: echo hello world
+
+      - name: Wait for 5 minutes
+        run: sleep 300  # Wait for 5 minutes (300 seconds)
+
+      - name: Make changes
+        run: |
+          git config -- user.email "karthik.rajendran@straive.com"
+          git config -- user.name "karthikstraiveus"
+          echo "This is a new commit" >> changes.txt
+          git add changes.txt
+          git commit -m "Automated commit after 5 minutes"
+          git push origin main  # Change this to your target branch
