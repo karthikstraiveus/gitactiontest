@@ -23,7 +23,7 @@ jobs:
       - name: Make changes
         run: |
           echo "This is a new commit" >> changes.txt
-          git config --local karthik.rajendran "you@example.com"
+          git config --local karthik.rajendran@straive.com "karthik.rajendran@straive.com"
           git config --local  karthikstraiveus "karthik straive"
           git add changes.txt
           git commit -m "Automated commit after 5 minutes"
