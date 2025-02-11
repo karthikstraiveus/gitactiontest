@@ -22,8 +22,8 @@ jobs:
 
       - name: Make changes
         run: |
-          git config -- karthik.rajendran@straive.com "karthik.rajendran@straive.com"
-          git config -- karthikstraiveus "karthik straive"
+          git config -- user.email "karthik.rajendran@straive.com"
+          git config -- user.name "karthikstraiveus"
           echo "This is a new commit" >> changes.txt
           git add changes.txt
           git commit -m "Automated commit after 5 minutes"
