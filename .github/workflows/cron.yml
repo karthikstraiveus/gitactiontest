@@ -1,0 +1,25 @@
+name: Scrape IMDb Top 250
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: "5 4 * * *"
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  scrape-imdb:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: karthik.rajendran@straive.com
+        uses: actions/checkout@v4
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add *.json
+          git commit -m "Update json [skip ci]" || exit 0
+          git push
