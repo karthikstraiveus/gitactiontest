@@ -26,7 +26,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+      - uses: actions/checkout@v4
       - name: karthik.rajendran@straive.com
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
